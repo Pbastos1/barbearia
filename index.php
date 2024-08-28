@@ -1,48 +1,140 @@
-  <!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
-  <title>Ficha de Cadastro Barbeiro</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - careca</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 5%;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            color: #ffffff;
+            background-image: linear-gradient(#000000, #2c2121,#503737,#ffffff, #ffffff);
+        }
+        
+        nav {
+            padding: 10px 0;
+        }
+
+        .container {
+            width: 100%;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li:first-child {
+            margin-left: 0;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #fff;
+        }
+
+        .card {
+            margin: 30px auto;
+            background-color: rgb(153, 140, 140);
+            color: #ffffff;
+            max-width: 600px; 
+            border-radius: 10px; 
+            overflow: hidden; 
+        }
+        
+        .card-header {
+            background-color: #2c333b;
+            color: #ffffff;
+        }
+
+        .card-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; 
+            align-items: center;
+        }
+
+        .card-title {
+            margin-top: 1rem;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .cards {
+            justify-content: center;
+            display: flex;
+        }
+
+        .rodape {
+            position: static;
+            bottom: 0;
+            padding: 10px;
+            width: 100%;
+            background-color: #7c4e4e;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-  
 
-<div class="container mt-3">
-  <h2>Ficha de Cadastro de Barbeiro</h2>
-  <form action="cadastrar_barbeiro.php" method='post'>
-    <div class="mb-3 mt-3">
-      <label for="nomeDoUsuario">Nome do Usuário:</label>
-      <input id="nomeDoUsuario" name="nomeDoUsuario" class="form-control" value="" type="text">
+<nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-1">
+                <img src="imagens/logo.png" height="80">
+            </div>
+            <div class="col-8 align-items-start pt-1" style="padding-top: 20px!important; font-size:30px">
+                Barbearia do careca
+            </div>
+        </div>
     </div>
-    <div class="mb-3 mt-3">
-        <label for="email">Email:</label>
-        <input id="emailDoUsuario" name="emailDoUsuario" class="form-control" value="" type="email">
-      </div>
-    <div class="mb-3 mt-3">
-        <label for="email">Data de Nascimento:</label>
-        <input id="dataDeNascimento" name="dataDeNascimento" class="form-control" value="" type="date">
-      </div>
-      <div class="mb-3 mt-3">
-        <label for="nomeDoBanco">Nome do Banco:</label>
-        <input id="nomeDoBanco" name="nomeDoBanco" class="form-control" value="">
-      </div>
-      <div class="mb-3 mt-3">
-        <label for="numeroDaAgencia">Número da Agência:</label>
-        <input id="numeroDaAgencia" name="numeroDaAgencia" class="form-control" value="">
-      </div>
-      <div class="mb-3 mt-3">
-        <label for="numeroDaConta">Número da Conta:</label>
-        <input id="numeroDaConta" name="numeroDaConta" class="form-control" value="">
-      </div>
-      <div class="mb-3 mt-3">
-        <label for="chavePix">Chave Pix:</label>
-        <input id="chavePix" name="chavePix" class="form-control" value="">
-      </div>
-    <button type="submit" class="btn btn-primary">Enviar</button>
-  </form>
+</nav>
+<br><br><br><br><br><br><br>
+<div class="container">
+    <div class="row cards">
+        <div class="col">
+            <div class="card text-center h-100">
+                <div class="card-header">
+                    Crie uma conta
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Aproveite ofertas para comprar tudo que quiser</h5>
+                    <img src="imagens/resgister.jpg" class="card-img-top" style="max-height: 300px; object-fit: cover;">
+                    <div class="button-container">
+                        <a href="paginadecadastro.php" class="btn btn-primary">Criar sua conta</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="rodap">
+  
 </div>
 
 </body>
