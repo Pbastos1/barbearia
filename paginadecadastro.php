@@ -41,6 +41,10 @@
         <label for="chavePix">Chave Pix:</label>
         <input id="chavePix" name="chavePix" class="form-control" value="">
       </div>
+      <div class="mb-3 mt-3">
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" name="senha" class="form-control" value="">
+      </div>
     <button type="submit" class="btn btn-primary">Enviar</button>
   </form>
 </div>
