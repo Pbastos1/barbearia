@@ -6,10 +6,10 @@
     public static $dbname = "barbearia";
     public static function con(){
       $conn = new mysql(
-        self->severname,
-        self->username,
-        self->password,
-        self->dbname;
+        self::$severname,
+        self::$username,
+        self::$password,
+        self::$dbname;
       );
     }
     
