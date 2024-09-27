@@ -1,6 +1,5 @@
 <?php
 include "connect.php";
-include "cadastrar_barbeiro.php";
 ?>
 
 <!DOCTYPE html>
@@ -27,15 +26,18 @@ include "cadastrar_barbeiro.php";
                         <th>Número da Conta</th>
                         <th>Chave Pix</th>
                         <th>Email</th>
+                        <th>Senha</th>
                     </tr>
                     </thead>
                     <tbody>
                         <?php
+                        $sql = 'select * from usuarios';
+                        $result = $conn->query($sql);
                     
                             if ($result->num_rows > 0) {
                                 // output data of each row
                                 while($row = $result->fetch_assoc()) {
-                                echo "<tr><td>".$row['id']."</td><td>".$row['nome_usuario']."</td><td>".$row['data_de_nascimento']."</td><td>".$row['nome_banco']."</td><td>".$row['numero_agencia']."</td><td>".$row['numero_conta']."</td><td>".$row['chave_pix']."</td><td>".$row['email']."</td></tr>";
+                                echo "<tr><td>".$row['id']."</td><td>".$row['nome_usuario']."</td><td>".$row['data_de_nascimento']."</td><td>".$row['nome_banco']."</td><td>".$row['numero_agencia']."</td><td>".$row['numero_conta']."</td><td>".$row['chave_pix']."</td><td>".$row['email']."</td><td>".$row['senha']."</td></tr>";
                                 }
                             }
                         ?>
