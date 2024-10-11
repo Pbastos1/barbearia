@@ -31,7 +31,7 @@ include "connect.php";
                     </thead>
                     <tbody>
                         <?php
-                        $sql = 'select * from cadastro_usuario';
+                        $sql = 'select * from usuarios';
                         $result = $conn->query($sql);
                     
                             if ($result->num_rows > 0) {
