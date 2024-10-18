@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Cadastrar Agenda do Barbeiro</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -16,8 +16,15 @@
       <label class="form-check-label">Barbeiro:</label>
       <select class="form-select">
         <option>Selecione um Barbeiro</option>
-        <option></option>
-        <option></option>
+        <?php
+        $sql = 'select * from usuarios where id_grupo = 2';
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+          while($row = $result->fetch_assoc()) {
+            echo "<option>".$row['nome_usuario']."</option>";
+          }
+        }
+        ?>
       </select>
     </div>
     <div class="mb-3 mt-3">

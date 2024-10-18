@@ -1,7 +1,10 @@
+<?php
+include "connect.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Agendar Atendimento</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -12,28 +15,49 @@
 <div class="container mt-3">
   <h2>Agendamento</h2>
   <form action="/cadastrar_barbeiro.php">
-  <div class="mb-3">
+  <div class="mb-3 mt-3">
       <label class="form-check-label">Cliente:</label>
       <select class="form-select">
         <option>Selecione um Cliente</option>
-        <option></option>
-        <option></option>
-      </select> <a href="#" class="btn btn-success">+</a>
+        <?php
+        $sql = 'select * from usuarios where id_grupo = 3';
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+          while($row = $result->fetch_assoc()) {
+            echo "<option>".$row['nome_usuario']."</option>";
+          }
+        }
+        ?>
+      </select> <a href="paginadecadastro.php" class="btn btn-success">+</a>
     </div>
-    <div class="mb-3">
+    <div class="mb-3 mt-3">
       <label class="form-check-label">Serviço:</label>
       <select class="form-select">
         <option>Selecione um Serviço</option>
-        <option>Corte</option>
-        <option></option>
+        <?php
+        $sql = 'select * from servicos';
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+          while($row = $result->fetch_assoc()) {
+            echo "<option>".$row['servico']."</option>";
+          }
+        }
+        ?>
       </select>
     </div>
-    <div class="mb-3">
+    <div class="mb-3 mt-3">
       <label class="form-check-label">Barbeiro:</label>
       <select class="form-select">
         <option>Selecione um Barbeiro</option>
-        <option></option>
-        <option></option>
+        <?php
+        $sql = 'select * from usuarios where id_grupo = 2';
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+          while($row = $result->fetch_assoc()) {
+            echo "<option>".$row['nome_usuario']."</option>";
+          }
+        }
+        ?>
       </select>
     </div>
     <div class="mb-3 mt-3">

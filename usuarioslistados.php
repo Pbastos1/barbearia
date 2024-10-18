@@ -27,6 +27,7 @@ include "connect.php";
                         <th>Chave Pix</th>
                         <th>Email</th>
                         <th>Senha</th>
+                        <th>Grupo</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -37,7 +38,16 @@ include "connect.php";
                             if ($result->num_rows > 0) {
                                 // output data of each row
                                 while($row = $result->fetch_assoc()) {
-                                echo "<tr><td>".$row['id']."</td><td>".$row['nome_usuario']."</td><td>".$row['data_de_nascimento']."</td><td>".$row['nome_banco']."</td><td>".$row['numero_agencia']."</td><td>".$row['numero_conta']."</td><td>".$row['chave_pix']."</td><td>".$row['email']."</td><td>".$row['senha']."</td></tr>";
+                                echo "<tr><td>".$row['id']."</td><td>"
+                                .$row['nome_usuario']."</td><td>"
+                                .$row['data_de_nascimento']."</td><td>"
+                                .$row['nome_banco']."</td><td>"
+                                .$row['numero_agencia']."</td><td>"
+                                .$row['numero_conta']."</td><td>"
+                                .$row['chave_pix']."</td><td>"
+                                .$row['email']."</td><td>"
+                                .$row['senha']."</td><td>"
+                                .$row['id_grupo']."</td></tr>";
                                 }
                             }
                         ?>
