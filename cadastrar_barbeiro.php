@@ -1,17 +1,17 @@
 <?php
 include "connect.php";
 
-$nomeDoUsuario = $_POST['nomeDoUsuario'];
+$nome_usuario = $_POST['nome_usuario'];
 $emailDoUsuario = $_POST['emailDoUsuario'];
 $dataDeNascimento = $_POST['dataDeNascimento'];
 $senha = $_POST['senha'];
 $id_grupo = $_POST['id_grupo'];
 
 $sql = "INSERT INTO usuarios (nome_usuario, data_de_nascimento, email, senha, id_grupo)
-VALUES ('$nomeDoUsuario', '$dataDeNascimento', '$emailDoUsuario', '$senha', '$id_grupo')";
+VALUES ('$nome_usuario', '$dataDeNascimento', '$emailDoUsuario', '$senha', '$id_grupo')";
 
 if (mysqli_query($conn, $sql)) {
-    echo "Usuário(a) $nomeDoUsuario foi incluido no banco de dados.";
+    echo "Usuário(a) $nome_usuario foi incluido no banco de dados.";
   } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
   }

@@ -9,16 +9,12 @@
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 5%;
-            width: 100%;
+            height: 100vh;
             background-size: cover;
             background-position: center;
             color: #ffffff;
-            background-image: linear-gradient(#000000, #2c2121,#503737,#ffffff, #ffffff);
-        }
-        
-        nav {
-            padding: 10px 0;
+           background-image: linear-gradient(170deg,black,white);
+           
         }
 
         .container {
@@ -58,7 +54,7 @@
             margin: 30px auto;
             background-color: rgb(153, 140, 140);
             color: #ffffff;
-            max-width: 600px; 
+            max-width: 400px;
             border-radius: 10px; 
             overflow: hidden; 
         }
@@ -105,15 +101,16 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-1">
+                <br><br><br><br>
                 <img src="imagens/logo.png" height="80">
             </div>
             <div class="col-8 align-items-start pt-1" style="padding-top: 20px!important; font-size:30px">
-                Barbearia do careca
+            <br><br>  Barbearia do careca
             </div>
         </div>
     </div>
 </nav>
-<br><br><br><br><br><br><br>
+<br><br>
 <div class="container">
     <div class="row cards">
         <div class="col">
@@ -122,10 +119,24 @@
                     Crie uma conta
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">Aproveite ofertas para comprar tudo que quiser</h5>
-                    <img src="imagens/resgister.jpg" class="card-img-top" style="max-height: 300px; object-fit: cover;">
+                    <h5 class="card-title">Registre-se</h5>
+                    <img src="imagens/registro.png" class="card-img-top" style="max-height: 300px; object-fit: cover;">
                     <div class="button-container">
                         <a href="paginadecadastro.php" class="btn btn-primary">Criar sua conta</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card text-center h-100">
+                <div class="card-header">
+                    Agendar
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Nossos barbeiros são de qualidade!</h5>
+                    <img src="imagens/agenda.png" class="card-img-top" style="max-height: 300px; object-fit: cover;">
+                    <div class="button-container">
+                        <a href="agendamento.php" class="btn btn-primary">Agendar</a>
                     </div>
                 </div>
             </div>
@@ -133,9 +144,6 @@
     </div>
 </div>
 
-<div class="rodap">
-  
-</div>
 
 </body>
 </html>

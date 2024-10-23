@@ -3,7 +3,7 @@
     private $id_usuario;
     private $nome;
     private $email;
-    private $id_grupo
+    private $id_grupo;
     public function SalvarUsuario($dados){
       $usuario = new Usuario();
       $usuario->nome = $dados['nome'];
