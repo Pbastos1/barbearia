@@ -1,44 +1,29 @@
 <?php
 include "connect.php";
+echo "<pre>";
+print_r($_POST);
 
 $dia = $_POST['dia'];
-$horario_inicio = $_POST['horario_inicio'];
-$horario_saida_intervalo = $_POST['horario_saida_intervalo'];
-$horario_volta_intervalo = $_POST['horario_volta_intervalo'];
-$horario_fim = $_POST['horario_fim'];
 
-$tempo =
-$start = strtotime($horario_inicio);
-$end = strtotime($horario_saida_intervalo);
-$mins = ($end - $start) / 60;
-echo $mins;
+$inicio = strtotime($_POST['horario_inicio']);
+$final = strtotime($_POST['horario_saida_intervalo']);
+$mins = ($inicio - $final) / 60;
 
-$qnt_de_agendamentos = $mins/30;
+if($mins < 0)
+    $mins = $mins*(-1);
+//echo $mins;
 
-echo "<br>qnt: $qnt_de_agendamentos";
-$acumulado = $start;
+$qnt_de_agendamento = $mins/30;
 
-for($i = 0; $i < $qnt_de_agendamentos; $i++){
-  echo "\n Criando agendamento no horário " . date('H:i', $acumulado);
-  $acumulado = $acumulado + 1800;
+//echo "<br> qnt: $qnt_de_agendamento";
+$acumulado = $inicio;
+
+echo "<h1>Geração de agendamentos do primeiro horário!</h1>";
+for($i = 0; $i < $qnt_de_agendamento; $i++){
+
+    echo "\n Criado agendamento no horario para: " . date('H:i', $acumulado);
+    $acumulado = $acumulado + 1800;
 }
-
-$start = strtotime($horario_volta_intervalo);
-$end = strtotime($horario_fim);
-$mins = ($end - $start) / 60;
-echo $mins;
-
-$qnt_de_agendamentos = $mins/30;
-
-echo "<br>qnt: $qnt_de_agendamentos";
-$acumulado = $start;
-
-for($i = 0; $i < $qnt_de_agendamentos; $i++){
-  echo "\n Criando agendamento no horário " . date('H:i', $acumulado);
-  $acumulado = $acumulado + 1800;
-}
-
-$horario = $tempo;
 
 $idUsuario = mysqli_insert_id($conn);
 
@@ -46,7 +31,7 @@ $idUsuario = mysqli_insert_id($conn);
   $result = $conn->query($sql);
 
 $sql = "INSERT INTO agenda (id_usuario, dia, horario)
-    VALUES ('$idUsuario', '$dia', '$horario')";
+    VALUES ('$idUsuario', '$dia', '$acumulado')";
 
 if (mysqli_query($conn, $sql)) {
   echo " Os dados foram incluidos no banco de dados.";
@@ -57,4 +42,44 @@ if (mysqli_query($conn, $sql)) {
 $sql = 'select * from agenda';
 $result = $conn->query($sql);
 
+
+
+$inicio = strtotime($_POST['horario_volta_intervalo']);
+$final = strtotime($_POST['horario_fim']);
+$mins = ($inicio - $final) / 60;
+
+if($mins < 0)
+    $mins = $mins*(-1);
+//echo $mins;
+
+$qnt_de_agendamento = $mins/30;
+
+//echo "<br> qnt: $qnt_de_agendamento";
+$acumulado = $inicio;
+
+echo "<h1>Geração de agendamentos do segundo horário!</h1>";
+for($i = 0; $i < $qnt_de_agendamento; $i++){
+
+    echo "\n Criado agendamento no horario para: " . date('H:i', $acumulado);
+    $acumulado = $acumulado + 1800;
+}
+
+
+
+$idUsuario = mysqli_insert_id($conn);
+
+  $sql = 'select * from usuarios';
+  $result = $conn->query($sql);
+
+$sql = "INSERT INTO agenda (id_usuario, dia, horario)
+    VALUES ('$idUsuario', '$dia', '$acumulado')";
+
+if (mysqli_query($conn, $sql)) {
+  echo " Os dados foram incluidos no banco de dados.";
+} else {
+  echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+}
+
+$sql = 'select * from agenda';
+$result = $conn->query($sql);
 ?>

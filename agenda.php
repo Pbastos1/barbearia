@@ -32,15 +32,15 @@ include "connect.php";
     </div>
     <div class="mb-3 mt-3">
       <label class="form-check-label">Dia da Semana:</label>
-      <select class="form-select">
+      <select class="form-select" >
         <option>Selecione um Dia</option>
-        <option value="dia">Domingo</option>
-        <option value="dia">Segunda-Feira</option>
-        <option value="dia">Terça-Feira</option>
-        <option value="dia">Quarta-Feira</option>
-        <option value="dia">Quinta-Feira</option>
-        <option value="dia">Sexta-Feira</option>
-        <option value="dia">Sábado</option>
+        <option value="0" name="dia">Domingo</option>
+        <option value="1" name="dia">Segunda-Feira</option>
+        <option value="2" name="dia">Terça-Feira</option>
+        <option value="3" name="dia">Quarta-Feira</option>
+        <option value="4" name="dia">Quinta-Feira</option>
+        <option value="5" name="dia">Sexta-Feira</option>
+        <option value="6" name="dia">Sábado</option>
       </select>
     </div>
     <div class="mb-3 mt-3">
