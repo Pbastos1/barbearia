@@ -17,30 +17,30 @@ include "connect.php";
   <form action="cadastrar_agenda.php" method="post">
   <div class="mb-3">
       <label class="form-check-label">Barbeiro:</label>
-      <select class="form-select">
-        <option>Selecione um Barbeiro</option>
+      <select class="form-select" name="barbeiro" id="barbeiro">
+        <option value="">Selecione um Barbeiro</option>
         <?php
-        $sql = 'select * from usuarios where id_grupo = 2';
-        $result = $conn->query($sql);
-        if ($result->num_rows > 0) {
-          while($row = $result->fetch_assoc()) {
-            echo "<option>".$row['nome_usuario']."</option>";
-          }
-        }
+         $sql = 'select * from usuarios where id_grupo = 2';
+         $result = $conn->query($sql);
+         if ($result->num_rows > 0) {
+           while($row = $result->fetch_assoc()) {
+             echo "<option value=".$row['id_usuario'].">".$row['nome_usuario']."</option>";
+           }
+         }
         ?>
       </select>
     </div>
     <div class="mb-3 mt-3">
       <label class="form-check-label">Dia da Semana:</label>
-      <select class="form-select" >
-        <option>Selecione um Dia</option>
-        <option value="0" name="dia">Domingo</option>
-        <option value="1" name="dia">Segunda-Feira</option>
-        <option value="2" name="dia">Terça-Feira</option>
-        <option value="3" name="dia">Quarta-Feira</option>
-        <option value="4" name="dia">Quinta-Feira</option>
-        <option value="5" name="dia">Sexta-Feira</option>
-        <option value="6" name="dia">Sábado</option>
+      <select name="dia" id="dia" class="form-select">
+        <option value="">Selecione um Dia</option>
+        <option value="0">Domingo</option>
+        <option value="1">Segunda-Feira</option>
+        <option value="2">Terça-Feira</option>
+        <option value="3">Quarta-Feira</option>
+        <option value="4">Quinta-Feira</option>
+        <option value="5">Sexta-Feira</option>
+        <option value="6">Sábado</option>
       </select>
     </div>
     <div class="mb-3 mt-3">

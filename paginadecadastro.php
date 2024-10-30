@@ -27,7 +27,7 @@
       </select><br>
       <button onclick="info()" class="btn btn-success" id='botao'>Confirmar</button>
     </div>
-  <form action="cadastrar_barbeiro.php" method='post'>
+  <form action="cadastrar_usuario.php" method='post'>
     
     <div class="mb-3 mt-3">
       <label for="nomeDoUsuario">Nome do Usuário:</label>
@@ -44,7 +44,7 @@
       <div class="mb-3 mt-3" id='banco'>
         <label for="nomeDoBanco">Nome do Banco:</label>
         <select id="nomeDoBanco" name="nomeDoBanco" class="form-control">
-        <option>Selecione um Banco</option>
+        <option value="">Selecione um Banco</option>
         </select>
       </div>
       <div class="mb-3 mt-3" id='agencia'>

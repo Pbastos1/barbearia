@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 18-Out-2024 às 22:10
+-- Tempo de geração: 30/10/2024 às 21:29
 -- Versão do servidor: 10.4.32-MariaDB
--- versão do PHP: 8.2.12
+-- Versão do PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,27 +24,33 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `agenda`
+-- Estrutura para tabela `agenda`
 --
 
 CREATE TABLE `agenda` (
   `id_agenda` int(11) NOT NULL,
   `id_usuario` varchar(11) NOT NULL,
-  `dia` date NOT NULL,
+  `dia` int(11) NOT NULL,
   `horario` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Extraindo dados da tabela `agenda`
---
-
-INSERT INTO `agenda` (`id_agenda`, `id_usuario`, `dia`, `horario`) VALUES
-(1, '4', '0000-00-00', '00:00:00');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `contatos`
+-- Estrutura para tabela `agendamento`
+--
+
+CREATE TABLE `agendamento` (
+  `id_agendamento` int(11) NOT NULL,
+  `id_agenda` int(11) NOT NULL,
+  `id_cliente` int(11) NOT NULL,
+  `id_barbeiro` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `contatos`
 --
 
 CREATE TABLE `contatos` (
@@ -56,7 +62,7 @@ CREATE TABLE `contatos` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `dado_bancario`
+-- Estrutura para tabela `dado_bancario`
 --
 
 CREATE TABLE `dado_bancario` (
@@ -69,16 +75,17 @@ CREATE TABLE `dado_bancario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `dado_bancario`
+-- Despejando dados para a tabela `dado_bancario`
 --
 
 INSERT INTO `dado_bancario` (`id_dado_bancario`, `nome_do_banco`, `numero_agencia`, `numero_conta`, `chave_pix`, `id_usuario`) VALUES
-(4, 'Banco do Brasil S.A.', '32133', '534523', '21999346587', 4);
+(4, 'Banco do Brasil S.A.', '32133', '534523', '21999346587', 4),
+(5, 'BNY Mellon Banco S.A.', '13442', '21314', '2199042412', 8);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `servicos`
+-- Estrutura para tabela `servicos`
 --
 
 CREATE TABLE `servicos` (
@@ -88,7 +95,7 @@ CREATE TABLE `servicos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `servicos`
+-- Despejando dados para a tabela `servicos`
 --
 
 INSERT INTO `servicos` (`id_servico`, `servico`, `valor`) VALUES
@@ -98,7 +105,7 @@ INSERT INTO `servicos` (`id_servico`, `servico`, `valor`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `usuarios`
+-- Estrutura para tabela `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -112,57 +119,71 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Extraindo dados da tabela `usuarios`
+-- Despejando dados para a tabela `usuarios`
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `nome_usuario`, `data_de_nascimento`, `data_criacao`, `email`, `senha`, `id_grupo`) VALUES
-(4, 'gabriel', '2008-12-05', '2024-10-18 17:04:39', 'gabriel@mail.com', '12345', 2);
+(4, 'gabriel', '2008-12-05', '2024-10-18 17:04:39', 'gabriel@mail.com', '12345', 2),
+(8, 'pablo', '2008-09-13', '2024-10-23 17:26:48', 'pablo@mail.com', '12345', 2),
+(10, 'vitor', '2009-03-16', '2024-10-30 16:16:40', 'vitor@mail.com', '65743', 3);
 
 --
 -- Índices para tabelas despejadas
 --
 
 --
--- Índices para tabela `agenda`
+-- Índices de tabela `agenda`
 --
 ALTER TABLE `agenda`
   ADD PRIMARY KEY (`id_agenda`);
 
 --
--- Índices para tabela `contatos`
+-- Índices de tabela `agendamento`
+--
+ALTER TABLE `agendamento`
+  ADD PRIMARY KEY (`id_agendamento`);
+
+--
+-- Índices de tabela `contatos`
 --
 ALTER TABLE `contatos`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_usuario` (`id_usuario`);
 
 --
--- Índices para tabela `dado_bancario`
+-- Índices de tabela `dado_bancario`
 --
 ALTER TABLE `dado_bancario`
   ADD PRIMARY KEY (`id_dado_bancario`),
   ADD KEY `id_usuario` (`id_usuario`);
 
 --
--- Índices para tabela `servicos`
+-- Índices de tabela `servicos`
 --
 ALTER TABLE `servicos`
   ADD PRIMARY KEY (`id_servico`);
 
 --
--- Índices para tabela `usuarios`
+-- Índices de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id_usuario`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT para tabelas despejadas
 --
 
 --
 -- AUTO_INCREMENT de tabela `agenda`
 --
 ALTER TABLE `agenda`
-  MODIFY `id_agenda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_agenda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+
+--
+-- AUTO_INCREMENT de tabela `agendamento`
+--
+ALTER TABLE `agendamento`
+  MODIFY `id_agendamento` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `contatos`
@@ -174,7 +195,7 @@ ALTER TABLE `contatos`
 -- AUTO_INCREMENT de tabela `dado_bancario`
 --
 ALTER TABLE `dado_bancario`
-  MODIFY `id_dado_bancario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_dado_bancario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `servicos`
@@ -186,20 +207,20 @@ ALTER TABLE `servicos`
 -- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- Restrições para despejos de tabelas
+-- Restrições para tabelas despejadas
 --
 
 --
--- Limitadores para a tabela `contatos`
+-- Restrições para tabelas `contatos`
 --
 ALTER TABLE `contatos`
   ADD CONSTRAINT `contatos_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`);
 
 --
--- Limitadores para a tabela `dado_bancario`
+-- Restrições para tabelas `dado_bancario`
 --
 ALTER TABLE `dado_bancario`
   ADD CONSTRAINT `dado_bancario_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`);

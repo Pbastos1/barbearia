@@ -21,13 +21,13 @@ include "connect.php";
                         <th>ID</th>
                         <th>Nome</th>
                         <th>Data de Nascimento</th>
-                        <th>Email</th>
-                        <th>Senha</th>
-                        <th>Grupo</th>
                         <th>Nome do Banco</th>
                         <th>Número da Agência</th>
                         <th>Número da Conta</th>
                         <th>Chave Pix</th>
+                        <th>Email</th>
+                        <th>Senha</th>
+                        <th>Grupo</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -38,26 +38,18 @@ include "connect.php";
                             if ($result->num_rows > 0) {
                                 // output data of each row
                                 while($row = $result->fetch_assoc()) {
-                                echo "<tr><td>".$row['id_usuario']."</td><td>"
+                                echo "<tr><td>".$row['id']."</td><td>"
                                 .$row['nome_usuario']."</td><td>"
                                 .$row['data_de_nascimento']."</td><td>"
+                                .$row['nome_banco']."</td><td>"
+                                .$row['numero_agencia']."</td><td>"
+                                .$row['numero_conta']."</td><td>"
+                                .$row['chave_pix']."</td><td>"
                                 .$row['email']."</td><td>"
                                 .$row['senha']."</td><td>"
-                                .$row['id_grupo']."</td>";
+                                .$row['id_grupo']."</td></tr>";
                                 }
                             }
-                        $sql = 'select * from dado_bancario';
-                        $result = $conn->query($sql);
-
-                        if ($result->num_rows > 0){
-                            while($row = $result->fetch_assoc()){
-                        echo "<td>".$row['nome_banco']."</td><td>"
-                            .$row['numero_agencia']."</td><td>"
-                            .$row['numero_conta']."</td><td>"
-                            .$row['chave_pix']."</td><td>"
-                            .$row['id_usuario']."</td></tr>";
-                            }
-                        }
                         ?>
                     </tbody>
                 </table>
